@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from controllers.book_controller import book_blueprint
+from controllers.author_controller import book_blueprint
 
 app = Flask(__name__)
 

@@ -13,12 +13,13 @@ def update_book_by_id():
     pass
 
 
-def insert_book(book):
-    sql = "INSERT INTO books (name, author) VALUES (%s %s) RETURNING id"
-    values = [books.name, author]
-    run_sql(sql, values)
-
-    return book
+def save_book(book):
+    # sql = "INSERT INTO books (name, author_id) VALUES (%s %s) RETURNING id"
+    # values = [book.name, book.author.id]
+    # results = run_sql(sql, values)
+    # id = results[0]['id']
+    # book.id = id
+    # return book
 
 
 def show_all_books():

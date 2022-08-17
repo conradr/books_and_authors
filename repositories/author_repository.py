@@ -15,13 +15,13 @@ def select_author_by_id(id):
         return author
 
 
-def delete_author_by_id(id):
+def delete_author(author):
     sql = "DELETE FROM authors WHERE id = %s"
-    values = [id]
+    values = [author.id]
     run_sql(sql, values)
 
 
-def update_author_by_id(author):
+def update_author_by_object(author):
     sql = "UPDATE authors SET (name) = (%s) WHERE id = %s"
     values = [author.name, author.id]
     run_sql(sql, values)
@@ -31,8 +31,7 @@ def save_author(author):
     sql = "INSERT INTO authors (name) VALUES (%s) RETURNING id"
     values = [author.name]
     results = run_sql(sql, values)
-    author_id = results[0]['id']
-    author.id = author_id
+    author.id = results[0]['id']
     return author
 
 

@@ -37,7 +37,13 @@ def save_author(author):
 
 def show_all_authors():
     sql = "SELECT * from authors"
-    return run_sql(sql)
+    authors = run_sql(sql)
+    list_output = []
+    for author in authors:
+        author = Author(**author)
+        list_output.append(author)
+    return list_output
+
 
 
 def authors_books(author):

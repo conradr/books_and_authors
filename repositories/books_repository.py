@@ -46,7 +46,6 @@ def insert_book(book):
 def show_all_books():
     sql = "SELECT * FROM books"
     books = run_sql(sql)
-    print(books)
     list_output = []
     for book in books:
         book = Book(book['name'], select_author_by_id(book['author_id']))

@@ -1,4 +1,31 @@
-{% extends "base.html" %} {% block content%}
-<p>authors</p>
+{% extends "base.html" %} {% block content %}
+<section>
+  <div class="hero">
+    <h1 class="title">Author list</h1>
+  </div>
+</section>
+<section>
+  <table class="table">
+    <tr>
+      <th>Author name</th>
+      <th>Books</th>
+      <th></th>
+    </tr>
+    {% for author in authors %}
+    <tr>
+      <td>{{author.name }}</td>
+    </tr>
+     <tr>
+      <td>{{author.book }}</td>
+    </tr>
+    {% endfor %} 
+   
+
+      <td class="edit-buttons">
+        <a class="btn btn-primary" href="/author/">Edit</a>
+      </td>
+    </tr>
+  </table>
+</section>
 
 {% endblock %}

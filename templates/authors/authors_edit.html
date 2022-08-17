@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<div class="wrapper">
+  <section class="form-left">
+    <h1 class="white">Edit Author</h1>
+    <p class="white">Update this authors details!</p>
+  </section>
+  <section class="form-right">
+    <form action="/authors" method="post">
+      <div class="form-field">
+        <label for="author_name">Author Name</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="author_name"
+          id="author_name"
+          value="{{author.name}}"
+        />
+      </div>
+
+      <input type="submit" class="btn btn-primary" value="Add Author" />
+    </form>
+  </section>
+</div>
+{% endblock %}

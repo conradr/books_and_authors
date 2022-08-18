@@ -8,24 +8,20 @@
   <table class="table">
     <tr>
       <th>Author name</th>
-      <th>Books</th>
-      <th></th>
+      <th>Books by author</th>
     </tr>
     {% for author in authors %}
     <tr>
       <td>{{author.name }}</td>
-    </tr>
-     <tr>
-      <td>{{author.book }}</td>
+      <td><a href="/books/author/{{author.id}}" class="btn btn-primary">View Books</a></td>
     </tr>
     {% endfor %} 
-   
+    <tr>
+      <td><a href="/authors/new" class="btn btn-primary">New author</a></td>
 
-      <td class="edit-buttons">
-        <a class="btn btn-primary" href="/author/">Edit</a>
-      </td>
-    </tr>
+      </tr>
   </table>
 </section>
+
 
 {% endblock %}

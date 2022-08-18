@@ -8,20 +8,18 @@ def select_book_by_id(id):
     sql = "SELECT * FROM books WHERE id = %s"
     values = [id]
     query_result = run_sql(sql, values)[0]
-    book = {"author": select_author_by_id(query_result["author_id"])}
-    book.update(query_result)
-    return Book(**book)
+    book = Book(query_result["name"], select_author_by_id(query_result["author_id"]), query_result["id"])
+    print(book.__dict__)
+    return book
 
 
-def select_all_books_from_author_by_author_id(id):
+def select_all_books_from_author(author):
     sql = "SELECT * FROM books WHERE author_id = %s"
-    values = [id]
+    values = [author.id]
     query_result = run_sql(sql, values)
     book_list = []
     for result in query_result:
-        book_dict = {"author": select_author_by_id(id)}
-        book_dict.update(result)
-        book_list.append(Book(**book_dict))
+        book_list.append(Book(result["name"], author, result["id"]))
     return book_list
 
 
@@ -33,7 +31,7 @@ def delete_book(book):
 
 def update_book(book):
     sql = "UPDATE books SET name = %s, author_id = %s WHERE id = %s"
-    values = [book.name, book.author_id, book.book_id]
+    values = [book.name, book.author.id, book.book_id]
     run_sql(sql, values)
 
 
@@ -48,6 +46,6 @@ def show_all_books():
     books = run_sql(sql)
     list_output = []
     for book in books:
-        book = Book(book['name'], select_author_by_id(book['author_id']))
+        book = Book(book['name'], select_author_by_id(book['author_id']), id=book["id"])
         list_output.append(book)
     return list_output

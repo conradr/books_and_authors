@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Books by {{author.name}}</h1>
+{% for book in books %}
+<p>{{book.name}}</p>
+{% endfor %}
+<a href="/books/author/{{author.id}}/new_book" class="btn btn-primary">add Books</a>
+
+{% endblock %}

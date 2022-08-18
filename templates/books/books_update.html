@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<div class="wrapper">
+  <section class="form-left">
+    <h1 class="white">Edit book</h1>
+    <p class="white">Current title : {{book.name}}</p>
+    <p class="white">Current Author : {{book.author.name}}</p>
+  </section>
+  <section class="form-right">
+    <form action="/books/author/{{book.id}}/new_book" method="post">
+      <div class="form-field">
+        <label for="book_name">book Name</label><br />
+        <input
+          class="form-control"
+          type="text"
+          name="book_name"
+          id="book_name"
+        />
+      </div>
+      <h1> INCOMPLETE NOT WORKING YET </h1>
+      <input type="submit" class="btn btn-primary" value="Add book" />
+    </form>
+  </section>
+</div>
+{% endblock %}
